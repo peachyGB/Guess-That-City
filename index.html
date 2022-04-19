@@ -7,8 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="./index.js"></script>
+    <script defer src="./index.js"></script>
     <title>Document</title>
   </head>
-  <body></body>
+
+  <body>
+    <h1>Guess That City!</h1>
+    <div id="imgContainer">
+      <img id="cityPhoto" src="nothin" alt="City Photo" />
+    </div>
+    <form id="guessForm">
+      <label for="“cityGuess”">What city is this?: </label>
+      <input type="“text”" id="“cityGuess”" name="“cityGuess”" /><br /><br />
+      <button id="btn" type="submit">Submit</button>
+    </form>
+  </body>
 </html>
