@@ -1,6 +1,9 @@
 #cityName {
   visibility: hidden;
 }
+#statsCard {
+  visibility: hidden;
+}
 
 #cityPhoto {
   max-width: 40%;

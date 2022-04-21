@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch(`https://api.teleport.org/api/urban_areas/`)
     .then((response) => response.json())
     .then((cityList) => listOptions(cityList));
-  //picks
+
   //creates a random number
   function randomInt(min, max) {
     min = Math.ceil(min);
@@ -16,6 +16,24 @@ document.addEventListener("DOMContentLoaded", () => {
     let i = cityIndex.toLowerCase();
     console.log(cityIndex);
 
+    //collects the statistics for each city
+    fetch(`https://api.teleport.org/api/urban_areas/slug:${[i]}/scores/`)
+      .then((response) => response.json())
+      .then((cityStats) => getStats(cityStats));
+
+    function getStats(cityStats) {
+      let statsCategories = cityStats.categories;
+      statsCategories.forEach((element) => {
+        let statsCard = document.getElementById("statsCard");
+        let newStat = document.createElement("div");
+        console.log(element.score_out_of_10);
+        statsCard.appendChild(newStat);
+        newStat.textContent = `${element.name}:  ${parseInt(
+          element.score_out_of_10
+        )}`;
+      });
+    }
+
     fetch(`https://api.teleport.org/api/urban_areas/slug:${[i]}/images/`)
       .then((response) => response.json())
       .then((cityFile) => handleImg(cityFile));
@@ -28,7 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
       let answer = document.getElementById("cityName");
       let submissionResponse = document.getElementById("submissionResponse");
 
+      //shows stats when hovering over photo
       answer.textContent = cityIndex;
+      photoBin.addEventListener("mouseover", (eve) => {
+        statsCard.style.visibility = "visible";
+      });
+      photoBin.addEventListener("mouseout", (eve) => {
+        statsCard.style.visibility = "hidden";
+      });
 
       //reveals answer when clicked
       answerBtn.addEventListener("click", (event) => {
@@ -52,11 +77,12 @@ document.addEventListener("DOMContentLoaded", () => {
   //lets the Next button work
   document
     .getElementById("nextCity")
-    .addEventListener("submit", () => console.log("hi"));
+    .addEventListener("submit", () => console.log(""));
 });
-//fix issue with city names that have spaces. turn ' ' into '-'  
-//pull city info from api
-//add hover event to display city info
+//fix issue with city names that have spaces. turn ' ' into '-'
+//add hover event to photo
+//hide stats until hover
+//select a few stats, not all(must still inclue iteration)
 //
 
 //css ideas - make submit button bigger and answer button smaller,
