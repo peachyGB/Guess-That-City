@@ -47,11 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
       let submissionResponse = document.getElementById("submissionResponse");
 
       //shows stats when hovering over photo
+      let container = document.getElementById("container");
       answer.textContent = cityIndex;
-      photoBin.addEventListener("mouseover", (eve) => {
+      container.addEventListener("mouseover", (eve) => {
         statsCard.style.visibility = "visible";
       });
-      photoBin.addEventListener("mouseout", (eve) => {
+      container.addEventListener("mouseout", (eve) => {
         statsCard.style.visibility = "hidden";
       });
 
@@ -80,9 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("submit", () => console.log(""));
 });
 //fix issue with city names that have spaces. turn ' ' into '-'
-//add hover event to photo
-//hide stats until hover
+//add hover event to photo -> add hover event to "container" or "statsCard" so it persists
 //select a few stats, not all(must still inclue iteration)
-//
+//add a header to stats section
 
-//css ideas - make submit button bigger and answer button smaller,
+//style the buttons
