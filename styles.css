@@ -1,14 +1,18 @@
 #cityName {
   visibility: hidden;
 }
+
 #statsCard {
   visibility: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  float: right;
+  font-size: 190%;
 }
 
 #cityPhoto {
-  max-width: 40%;
-  max-height: 40%;
-  display: block;
+  max-width: 60%;
+  max-height: 60%;
   margin-left: auto;
   margin-right: auto;
 }
