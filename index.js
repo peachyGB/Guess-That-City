@@ -1,35 +1,52 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let moscowImgSrc = fetch(
-    "https://api.teleport.org/api/urban_areas/slug:moscow/images/"
-  )
+  fetch(`https://api.teleport.org/api/urban_areas/`)
     .then((response) => response.json())
-    .then((moscowImage) => handleImg(moscowImage));
-  // let mexicoCityImgSrc = fetch(​​'https://api.teleport.org/api/urban_areas/slug:mexico-city/images/')
-  //   .then((response) => response.json())
-  //   .then((mexicoCityImage) => handleImg(mexicoCityImage));
-  // let tokyoImgSrc = fetch(​​'https://api.teleport.org/api/urban_areas/slug:tokyo/images/')
-  //   .then((response) => response.json())
-  //   .then((tokyoImage) => handleImg(tokyoImage));
-  //     let barcelonaImgSrc = fetch(​​'https://api.teleport.org/api/urban_areas/slug:barcelona/images/')
-  //   .then((response) => response.json())
-  //   .then((barcelonaImage) => handleImg(barcelonaImage));
-  //     let sanFranciscoImgSrc = fetch(​​'https://api.teleport.org/api/urban_areas/slug:san-francisco-bay-area/images/')
-  //   .then((response) => response.json())
-  //   .then((sanFranciscoImage) => handleImg(sanFranciscoImage));
+    .then((cityList) => listOptions(cityList));
 
-  function handleImg(data) {
-    let photoBin = document.getElementById("cityPhoto");
-    photoBin.src = data.photos[0].image.mobile;
-    console.log(photoBin);
-    /* brain tasks
-insert photos from api*/
+  let x = 200;
+  function listOptions(list) {
+    let cityIndex = list._links["ua:item"][x].name;
+    let i = cityIndex.toLowerCase();
+    console.log(cityIndex);
+
+    fetch(`https://api.teleport.org/api/urban_areas/slug:${i}/images/`)
+      .then((response) => response.json())
+      .then((cityFile) => handleImg(cityFile));
+
+    function handleImg(data) {
+      let photoBin = document.getElementById("cityPhoto");
+      photoBin.src = data.photos[0].image.mobile;
+      let answerBtn = document.getElementById("getAnswerBtn");
+      let guessForm = document.getElementById("guessForm");
+      let answer = document.getElementById("cityName");
+      let submissionResponse = document.getElementById("submissionResponse");
+
+      answer.textContent = cityIndex;
+
+      //reveals answer when clicked
+      answerBtn.addEventListener("click", (event) => {
+        answer.style.visibility = "visible";
+      });
+
+      //makes the submit form work
+      guessForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        checkAnswer(e);
+      });
+
+      //compares the guess and the answer
+      function checkAnswer(e) {
+        cityGuess.value == answer.textContent
+          ? (submissionResponse.textContent = "Correct!")
+          : (submissionResponse.textContent = "Sorry, try again!");
+      }
+    }
   }
 });
-//_links -> ua:item -> [index] -> _links -> ua:images -> photos -> image -> moble
 
-//add functionality to submit forms
-////confirm tru or false city name
-//pull images from api
+
 //pull city info from api
 //add hover event to display city info
 //
+
+//css ideas - make submit button bigger and answer button smaller,
