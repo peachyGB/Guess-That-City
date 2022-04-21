@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((response) => response.json())
     .then((cityList) => listOptions(cityList));
 
-  let x = 200;
+  let x = randomInt(0, 250);
   function listOptions(list) {
     let cityIndex = list._links["ua:item"][x].name;
     let i = cityIndex.toLowerCase();
@@ -43,8 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
-
-
+function randomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
 //pull city info from api
 //add hover event to display city info
 //
