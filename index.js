@@ -2,14 +2,21 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch(`https://api.teleport.org/api/urban_areas/`)
     .then((response) => response.json())
     .then((cityList) => listOptions(cityList));
-
+  //picks
+  //creates a random number
+  function randomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+  // the random number is the index of the next city
   let x = randomInt(0, 250);
   function listOptions(list) {
     let cityIndex = list._links["ua:item"][x].name;
     let i = cityIndex.toLowerCase();
     console.log(cityIndex);
 
-    fetch(`https://api.teleport.org/api/urban_areas/slug:${i}/images/`)
+    fetch(`https://api.teleport.org/api/urban_areas/slug:${[i]}/images/`)
       .then((response) => response.json())
       .then((cityFile) => handleImg(cityFile));
 
@@ -42,12 +49,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
+  //lets the Next button work
+  document
+    .getElementById("nextCity")
+    .addEventListener("submit", () => console.log("hi"));
 });
-function randomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min);
-}
+//fix issue with city names that have spaces. turn ' ' into '-'  
 //pull city info from api
 //add hover event to display city info
 //

@@ -1,3 +1,18 @@
 #cityName {
   visibility: hidden;
 }
+
+#cityPhoto {
+  max-width: 40%;
+  max-height: 40%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#submitGroup {
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid black;
+  padding: 10px;
+}

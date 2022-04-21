@@ -13,18 +13,21 @@
     <h1>Guess That City!</h1>
     <div id="cityOne">
       <img id="cityPhoto" src="" alt="City Photo" />
-
-      <form id="guessForm">
-        <label for="cityGuess">What city is this?: </label><br /><br />
-        <input type="text" id="cityGuess" name="cityGuess" value="" />
-        <button id="btn" type="submit">Submit</button>
-        <div id="submissionResponse"></div>
-      </form>
-      <br />
-      <button id="getAnswerBtn" type="submit">Get answer?</button>
-      <span id="cityName"></span>
-      <br /><br />
-      <button id="nextCity" type="submit">Next City</button>
+      <div id="submitGroup">
+        <form id="guessForm">
+          <label for="cityGuess">What city is this?: </label><br /><br />
+          <input type="text" id="cityGuess" name="cityGuess" value="" />
+          <button id="btn" type="submit">Submit</button>
+          <div id="submissionResponse"></div>
+        </form>
+        <br />
+        <button id="getAnswerBtn" type="submit">Get answer?</button>
+        <span id="cityName"></span>
+        <br /><br />
+        <form>
+          <button id="nextCity" type="submit">Next City</button>
+        </form>
+      </div>
     </div>
-
-    
+  </body>
+</html>
