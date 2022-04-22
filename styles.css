@@ -17,10 +17,10 @@
 
 #container {
   position: relative;
-  margin-left: 10cm;
-  margin-right: 10cm;
+  margin-left: 8cm;
+  margin-right: 8cm;
   display: block;
-  border: 3px solid black;
+  border: 5px solid black;
 }
 #statsCard {
   visibility: hidden;
@@ -50,19 +50,17 @@
 
 #submitGroup {
   border: 3px solid black;
-  padding: 80px;
-  margin-left: 13cm;
-  margin-right: 13cm;
+  padding: 60px;
+  margin-left: 8cm;
+  margin-right: 8cm;
   display: block;
+  background-color: white;
 }
+
 h1 {
   font-size: 300%;
   color: white;
   text-align: center;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgb(0, 0, 0);
-}
-
-#submitGroup {
-  background-color: white;
 }

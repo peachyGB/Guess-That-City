@@ -15,8 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let cityIndex = list._links["ua:item"][x].name;
     let cityIndexNS = cityIndex.replace(" ", "-");
     // cityIndex.forEach((letter) => {
-    //   letter = " " ? letter.replace(" ", "-") : console.log(cityIndex);
+    //   letter = " " ? letter.replace(" ", "-") :
     // });
+    console.log(cityIndex);
     let i = cityIndexNS.toLowerCase();
 
     //collects the statistics for each city
@@ -36,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       //removes certain stats
       let statsList = document.querySelectorAll("#statsCard div");
-      console.log(statsList);
       statsList[0].remove();
       statsList[2].remove();
       statsList[3].remove();
@@ -80,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
         country.style.visibility = "visible";
       });
       function insertCountry(cntry) {
-        console.log(cntry._links["ua:countries"][0].name);
         country.textContent = `This city is located in ${cntry._links["ua:countries"][0].name}`;
       }
 
