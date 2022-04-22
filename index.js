@@ -13,8 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let x = randomInt(0, 250);
   function listOptions(list) {
     let cityIndex = list._links["ua:item"][x].name;
-    let i = cityIndex.toLowerCase();
-    console.log(cityIndex);
+    let cityIndexNS = cityIndex.replace(" ", "-");
+    // cityIndex.forEach((letter) => {
+    //   letter = " " ? letter.replace(" ", "-") : console.log(cityIndex);
+    // });
+    let i = cityIndexNS.toLowerCase();
 
     //collects the statistics for each city
     fetch(`https://api.teleport.org/api/urban_areas/slug:${[i]}/scores/`)
@@ -26,12 +29,23 @@ document.addEventListener("DOMContentLoaded", () => {
       statsCategories.forEach((element) => {
         let statsCard = document.getElementById("statsCard");
         let newStat = document.createElement("div");
-        console.log(element.score_out_of_10);
         statsCard.appendChild(newStat);
         newStat.textContent = `${element.name}:  ${parseInt(
           element.score_out_of_10
         )}`;
       });
+      //removes certain stats
+      let statsList = document.querySelectorAll("#statsCard div");
+      console.log(statsList);
+      statsList[0].remove();
+      statsList[2].remove();
+      statsList[3].remove();
+      statsList[5].remove();
+      statsList[6].remove();
+      statsList[10].remove();
+      statsList[13].remove();
+      statsList[15].remove();
+      statsList[16].remove();
     }
 
     fetch(`https://api.teleport.org/api/urban_areas/slug:${[i]}/images/`)
@@ -55,6 +69,20 @@ document.addEventListener("DOMContentLoaded", () => {
       container.addEventListener("mouseout", (eve) => {
         statsCard.style.visibility = "hidden";
       });
+
+      //reveals hint when clicked
+      let country = document.getElementById("country");
+      fetch(`https://api.teleport.org/api/urban_areas/slug:${[i]}/`)
+        .then((response) => response.json())
+        .then((cntry) => insertCountry(cntry));
+      let hint = document.getElementById("hint");
+      hint.addEventListener("click", (eventt) => {
+        country.style.visibility = "visible";
+      });
+      function insertCountry(cntry) {
+        console.log(cntry._links["ua:countries"][0].name);
+        country.textContent = `This city is located in ${cntry._links["ua:countries"][0].name}`;
+      }
 
       //reveals answer when clicked
       answerBtn.addEventListener("click", (event) => {
