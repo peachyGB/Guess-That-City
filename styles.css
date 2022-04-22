@@ -1,3 +1,12 @@
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -9;
+}
+
 #country {
   visibility: hidden;
 }
@@ -8,8 +17,8 @@
 
 #container {
   position: relative;
-  margin-left: 8cm;
-  margin-right: 8cm;
+  margin-left: 10cm;
+  margin-right: 10cm;
   display: block;
   border: 3px solid black;
 }
@@ -40,11 +49,20 @@
 }
 
 #submitGroup {
-  margin-left: auto;
-  margin-right: auto;
   border: 3px solid black;
-  padding: 10px;
+  padding: 80px;
+  margin-left: 13cm;
+  margin-right: 13cm;
+  display: block;
 }
 h1 {
-  font-size: 200%;
+  font-size: 300%;
+  color: white;
+  text-align: center;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(0, 0, 0);
+}
+
+#submitGroup {
+  background-color: white;
 }

@@ -107,10 +107,5 @@ document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("nextCity")
     .addEventListener("submit", () => console.log(""));
+  document.getElementById("myVideo").playbackRate = 0.75;
 });
-//fix issue with city names that have spaces. turn ' ' into '-'
-//add hover event to photo -> add hover event to "container" or "statsCard" so it persists
-//select a few stats, not all(must still inclue iteration)
-//add a header to stats section
-
-//style the buttons
