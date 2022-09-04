@@ -28,15 +28,15 @@ document.addEventListener("DOMContentLoaded", () => {
     function getStats(cityStats) {
       let statsCategories = cityStats.categories;
       statsCategories.forEach((element) => {
-        let statsCard = document.getElementById("statsCard");
+        let statsInfo = document.getElementById("statsInfo");
         let newStat = document.createElement("div");
-        statsCard.appendChild(newStat);
+        statsInfo.appendChild(newStat);
         newStat.textContent = `${element.name}:  ${parseInt(
           element.score_out_of_10
         )}`;
       });
       //removes certain stats
-      let statsList = document.querySelectorAll("#statsCard div");
+      let statsList = document.querySelectorAll("#statsInfo div");
       statsList[0].remove();
       statsList[2].remove();
       statsList[3].remove();
@@ -61,14 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
       let submissionResponse = document.getElementById("submissionResponse");
 
       //shows stats when hovering over photo
-      let container = document.getElementById("container");
-      answer.textContent = cityIndex;
-      container.addEventListener("mouseover", (eve) => {
-        statsCard.style.visibility = "visible";
-      });
-      container.addEventListener("mouseout", (eve) => {
-        statsCard.style.visibility = "hidden";
-      });
+      // let container = document.getElementById("container");
+      // answer.textContent = cityIndex;
+      // container.addEventListener("mouseover", (eve) => {
+      //   statsInfo.style.visibility = "visible";
+      // });
+      // container.addEventListener("mouseout", (eve) => {
+      //   statsInfo.style.visibility = "hidden";
+      // });
 
       //reveals hint when clicked
       let country = document.getElementById("country");

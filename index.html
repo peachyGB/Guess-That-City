@@ -14,34 +14,33 @@
       <source src=media/world.mp4 type="video/mp4">
     </video>
     <h1>Guess That City!</h1>
-    <div id="cityOne">
-      <div id="container">
-        <div id="statsCard">
-          <h4>Quality of life scores:</h4>
-          <br />
-        </div>
-        <img id="cityPhoto" src="" alt="City Photo" />
+    <div id="container">
+      <div id="overlay"></div>
+      <img id="cityPhoto" src="" alt="City Photo" />
+      <div id="statsInfo">
+        <h2>Quality of life scores:</h2>
+        <br />
       </div>
-      <br /><br /><br />
-      <div id="submitGroup">
-        <form id="guessForm">
-          <label for="cityGuess">What city is this?: </label><br /><br />
-          <input type="text" id="cityGuess" name="cityGuess" value="" />
-          <button id="btn" type="submit">Submit</button>
-          <div id="submissionResponse"></div>
-        </form>
-        <br />
-        <button id="hint" type="submit">Hint?</button>
-        <span id="country">#####</span>
-        <br />
-        <br />
-        <button id="getAnswerBtn" type="submit">Get answer?</button>
-        <span id="cityName"></span>
-        <br /><br />
-        <form>
-          <button id="nextCity" type="submit">Next City</button>
-        </form>
-      </div>
+    </div>
+    <br /><br /><br />
+    <div id="submitGroup">
+      <form id="guessForm">
+        <label for="cityGuess">What city is this?: </label><br /><br />
+        <input type="text" id="cityGuess" name="cityGuess" value="" />
+        <button id="btn" type="submit">Submit</button>
+        <div id="submissionResponse"></div>
+      </form>
+      <br />
+      <button id="hint" type="submit">Hint?</button>
+      <span id="country">#####</span>
+      <br />
+      <br />
+      <button id="getAnswerBtn" type="submit">Get answer?</button>
+      <span id="cityName"></span>
+      <br /><br />
+      <form>
+        <button id="nextCity" type="submit">Next City</button>
+      </form>
     </div>
   </body>
 </html>
