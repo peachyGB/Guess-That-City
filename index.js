@@ -3,20 +3,19 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((response) => response.json())
     .then((cityList) => listOptions(cityList));
 
-  //creates a random number
+  //RNG
   function randomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
   }
-  // the random number is the index of the next city
+
+  // selects the next city based on the index determined by the RNG
   let x = randomInt(0, 250);
   function listOptions(list) {
     let cityIndex = list._links["ua:item"][x].name;
+    //removes spaces for urls
     let cityIndexNS = cityIndex.replace(" ", "-");
-    // cityIndex.forEach((letter) => {
-    //   letter = " " ? letter.replace(" ", "-") :
-    // });
     console.log(cityIndex);
     let i = cityIndexNS.toLowerCase();
 
@@ -35,7 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
           element.score_out_of_10
         )}`;
       });
-      //removes certain stats
+
+      //removes unwanted stats
       let statsList = document.querySelectorAll("#statsInfo div");
       statsList[0].remove();
       statsList[2].remove();
@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       statsList[16].remove();
     }
 
+    // finds the image for the selected city
     fetch(`https://api.teleport.org/api/urban_areas/slug:${[i]}/images/`)
       .then((response) => response.json())
       .then((cityFile) => handleImg(cityFile));
@@ -59,16 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let guessForm = document.getElementById("guessForm");
       let answer = document.getElementById("cityName");
       let submissionResponse = document.getElementById("submissionResponse");
-
-      //shows stats when hovering over photo
-      // let container = document.getElementById("container");
-      // answer.textContent = cityIndex;
-      // container.addEventListener("mouseover", (eve) => {
-      //   statsInfo.style.visibility = "visible";
-      // });
-      // container.addEventListener("mouseout", (eve) => {
-      //   statsInfo.style.visibility = "hidden";
-      // });
+      answer.textContent = cityIndex;
 
       //reveals hint when clicked
       let country = document.getElementById("country");
@@ -88,13 +80,12 @@ document.addEventListener("DOMContentLoaded", () => {
         answer.style.visibility = "visible";
       });
 
-      //makes the submit form work
+      //checks the users guess for correctness
       guessForm.addEventListener("submit", (e) => {
         e.preventDefault();
         checkAnswer(e);
       });
 
-      //compares the guess and the answer
       function checkAnswer(e) {
         cityGuess.value == answer.textContent
           ? (submissionResponse.textContent = "Correct!")
@@ -102,7 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
-  //lets the Next button work
+
+  //refreshes page to generate new number and select new city
   document
     .getElementById("nextCity")
     .addEventListener("submit", () => console.log(""));

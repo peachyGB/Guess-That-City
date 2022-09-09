@@ -9,7 +9,6 @@ body {
   min-width: 100%;
   min-height: 100%;
   z-index: -9;
-  /* visibility: hidden; */
 }
 
 #country {
