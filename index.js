@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       function checkAnswer(e) {
-        cityGuess.value == answer.textContent
+        cityGuess.value.toLowerCase() == answer.textContent.toLowerCase()
           ? (submissionResponse.textContent = "Correct!")
           : (submissionResponse.textContent = "Sorry, try again!");
       }
