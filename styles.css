@@ -13,6 +13,7 @@ body {
 
 #country {
   visibility: hidden;
+  text-align: center;
 }
 
 #cityName {
@@ -82,6 +83,22 @@ body {
   width: 50%;
   background-color: white;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#submissionResponse {
+  visibility: hidden;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  font-size: 200%;
 }
 
 h1 {
@@ -90,4 +107,26 @@ h1 {
   text-align: center;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgb(0, 0, 0);
+}
+
+#btn,
+#hint,
+#getAnswerBtn,
+#nextCity,
+input {
+  background-color: #013673;
+  border: 2px solid #013673;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px;
+  font-size: 13px;
+}
+input {
+  background-color: #b2cff1;
+  color: black;
+  border: 2px solid #aaaaab;
+  caret-color: #013673;
 }
