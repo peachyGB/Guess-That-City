@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       guessForm.addEventListener("submit", (e) => {
         e.preventDefault();
         checkAnswer(e);
+        submissionResponse.style.visibility = "visible";
       });
 
       function checkAnswer(e) {
